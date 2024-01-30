@@ -1,10 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ErrorPrintInterceptor } from './error-print.interceptor';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ErrorPrintInterceptor', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       providers: [ErrorPrintInterceptor],
     })
   );
