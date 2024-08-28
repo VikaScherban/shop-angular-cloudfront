@@ -11,7 +11,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProductsModule } from './products/products.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CartModule } from './cart/cart.module';
 import { CONFIG_TOKEN } from './core/injection-tokens/config.token';
@@ -29,6 +33,7 @@ const interceptors: Provider[] = [
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,7 +45,6 @@ const interceptors: Provider[] = [
     MatTooltipModule,
     ProductsModule,
     CartModule,
-    HttpClientModule,
     MatBadgeModule,
     MatSnackBarModule,
   ],
@@ -50,7 +54,7 @@ const interceptors: Provider[] = [
       provide: CONFIG_TOKEN,
       useValue: environment,
     },
+    provideHttpClient(withInterceptorsFromDi()),
   ],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}
