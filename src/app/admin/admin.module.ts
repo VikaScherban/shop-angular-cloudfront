@@ -12,7 +12,6 @@ import { OrdersService } from './orders/orders.service';
 import { ManageProductsComponent } from './manage-products/manage-products.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FilePickerModule } from '../shared/file-picker/file-picker.module';
-import { ManageProductsService } from './manage-products/manage-products.service';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 
@@ -34,6 +33,6 @@ import { ProfileSettingsComponent } from './profile-settings/profile-settings.co
     MatProgressSpinnerModule,
     ReactiveFormsModule,
   ],
-  providers: [OrdersService, ManageProductsService],
+  providers: [OrdersService],
 })
 export class AdminModule {}

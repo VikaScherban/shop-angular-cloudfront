@@ -3,7 +3,9 @@ import { EMPTY, Observable } from 'rxjs';
 import { ApiService } from '../../core/api.service';
 import { switchMap } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ManageProductsService extends ApiService {
   uploadProductsCSV(file: File): Observable<unknown> {
     if (!this.endpointEnabled('import')) {
@@ -17,7 +19,6 @@ export class ManageProductsService extends ApiService {
       switchMap((url) =>
         this.http.put(url, file, {
           headers: {
-            // eslint-disable-next-line @typescript-eslint/naming-convention
             'Content-Type': 'text/csv',
           },
         })
